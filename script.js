@@ -27,6 +27,13 @@ const jay = 'Jay';
 console.log(jonas instanceof Person);
 console.log(jay instanceof Person);
 
+Person.hey = function() {
+  console.log('Hey there!');
+  console.log(this);
+};
+
+Person.hey();
+
 // prototypes
 console.log(Person.prototype);
 Person.prototype.calcAge = function () {
@@ -81,6 +88,7 @@ class PersonCl {
     this.birthYear = birthYear;
   }
 
+  // instance methods
   // methods will be added to .prototype property
   calcAge() {
     console.log(2037 - this.birthYear);
@@ -104,6 +112,12 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  // static method
+  static hey() {
+    console.log('Hey there!');
+    console.log(this);
+  }
 }
 
 const jessica = new PersonCl('Jessica Davis', 1996);
@@ -123,6 +137,7 @@ jessica.greet();
 // 3. classes are executed in strict mode
 
 const walter = new PersonCl('Walter White', 1965);
+PersonCl.hey();
 
 const account = {
   owner: 'Jonas',
